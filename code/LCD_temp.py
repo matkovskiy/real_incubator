@@ -2,6 +2,7 @@
 import lcddriver
 import time
 import Adafruit_DHT
+from gpiozero import LED
 
 DHT_SENSOR = Adafruit_DHT.DHT22
 DHT_PIN = 14
@@ -21,6 +22,7 @@ try:
         display.lcd_clear() 
         humidity, temperature = Adafruit_DHT.read_retry(DHT_SENSOR, DHT_PIN)
         if humidity is not None and temperature is not None:
+            print(temperature)
             display.lcd_display_string("Temp={0:0.1f}*C".format(temperature),1)
             display.lcd_display_string("Humidity={0:0.1f}%".format(humidity),2)
 
