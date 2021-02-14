@@ -18,10 +18,11 @@ try:
         display.lcd_display_string("Hell dear, Max", 1)  # Write line of text to first line of display
         display.lcd_display_string("Hell dear, Sergey", 2)  # Write line of text to second line of display
         time.sleep(4)                                     # Give time for the message to be read
+        display.lcd_clear() 
         humidity, temperature = Adafruit_DHT.read_retry(DHT_SENSOR, DHT_PIN)
         if humidity is not None and temperature is not None:
             display.lcd_display_string("Temp={0:0.1f}*C".format(temperature),1)
-            display.lcd_display_string("Humidity={1:0.1f}%".format(humidity),2)
+            display.lcd_display_string("Humidity={0:0.1f}%".format(humidity),2)
 
             print("Temp={0:0.1f}*C  Humidity={1:0.1f}%".format(temperature, humidity))
         else:
