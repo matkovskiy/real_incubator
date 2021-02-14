@@ -10,6 +10,8 @@ DHT_PIN = 14
 # Load the driver and set it to "display"
 # If you use something from the driver library use the "display." prefix first
 display = lcddriver.lcd()
+temp_low = 25
+temp_high = 27
 
 # Main body of code
 try:
@@ -23,6 +25,14 @@ try:
         humidity, temperature = Adafruit_DHT.read_retry(DHT_SENSOR, DHT_PIN)
         if humidity is not None and temperature is not None:
             print(temperature)
+            if temperature < temp_low :
+                print ("need to enable heating ")
+            elif temperature > temp_high: 
+                print("need to disable heating")
+            else:
+                print("OK")
+
+
             display.lcd_display_string("Temp={0:0.1f}*C".format(temperature),1)
             display.lcd_display_string("Humidity={0:0.1f}%".format(humidity),2)
 
