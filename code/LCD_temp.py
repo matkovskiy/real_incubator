@@ -28,7 +28,7 @@ try:
         else:
             print("Failed to retrieve data from humidity sensor")
         
-        
+        time.sleep(10) 
         display.lcd_clear()                               # Clear the display of any data       
         display.lcd_display_string("Go to sleep!", 1)    # Refresh the first line of display with a different message
         time.sleep(4)                                     # Give time for the message to be read
