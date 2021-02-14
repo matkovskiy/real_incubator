@@ -6,6 +6,7 @@ from gpiozero import LED
 
 DHT_SENSOR = Adafruit_DHT.DHT22
 DHT_PIN = 14
+led = LED(21)
 
 # Load the driver and set it to "display"
 # If you use something from the driver library use the "display." prefix first
@@ -27,8 +28,10 @@ try:
             print(temperature)
             if temperature < temp_low :
                 print ("need to enable heating ")
+                led.on()
             elif temperature > temp_high: 
                 print("need to disable heating")
+                led.off()
             else:
                 print("OK")
 
