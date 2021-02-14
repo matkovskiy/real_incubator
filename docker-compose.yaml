@@ -1,0 +1,18 @@
+version: '3.7'
+services:
+  real_incubator:
+    image: amatkovskiy/real_incubator:0.0.1
+    build:
+      context: .
+    # env_file:
+      # - config.env
+    container_name: real_incubator
+    command: python code/incubator.py
+    ports:
+      # <Port exposed> 
+      - "80:8080"
+      # Where our data will be persisted
+    expose:
+      # Opens port 8086 on the container
+      - '80'
+    restart: always
